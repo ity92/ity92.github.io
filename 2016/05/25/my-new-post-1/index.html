@@ -1,94 +1,22 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
+<title>
   
+    Hand Detection Using Color Recognition
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
+</title>
 
 <meta name="description" content="This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.=================================================================">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hand Detection Using Color Recognition">
 <meta property="og:url" content="http://yoursite.com/2016/05/25/my-new-post-1/index.html">
-<meta property="og:site_name" content="3D-Hand-tracking">
+<meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.=================================================================">
 <meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/logo.png">
 <meta property="og:updated_time" content="2016-06-02T03:24:31.211Z">
@@ -98,466 +26,281 @@
 <meta name="twitter:image" content="http://o84kcsbtx.bkt.clouddn.com/logo.png">
 
 
+  <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
 
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: 'Author'
-    }
-  };
-</script>
 
-  <title> Hand Detection Using Color Recognition | 3D-Hand-tracking </title>
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
+<body
   
-
-
-
-
-
-
-
-
-
-
+    class="monochrome"
   
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">3D-Hand-tracking</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">A demo to track your hand——by 李杜&陈健&刘超越&涂明明</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
   </button>
+  <a class="title" href="/">Hexo</a>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">Hexo</a></h1>
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <div class="info">
+      <div class="content">
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Hand Detection Using Color Recognition
-              
-            
-          </h1>
+          <div class="author">John Doe</div>
         
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T17:24:30+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
-          </span>
-
+      </div>
+      
+        <div class="avatar">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/about"><img src="https://cn.gravatar.com/avatar/35fef74d731255cd569c2c2b0b9e87e4?s=200"></a>
           
         </div>
-      </header>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">5</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/denjones/hexo-theme-chan" title="Chan" target="_blank" rel="external">Chan</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/denjones" title="Github" target="_blank" rel="external">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-my-new-post-1" class="article article-type-post">
+  
+    <h1 class="article-header">
+      Hand Detection Using Color Recognition
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2016-05-25
+</span>
+
     
 
+    
 
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="This-week-our-team-mainly-do-the-following-work-We-identified-the-main-train-of-thought-and-do-some-experiments-to-realize-the-Step-a"><a href="#This-week-our-team-mainly-do-the-following-work-We-identified-the-main-train-of-thought-and-do-some-experiments-to-realize-the-Step-a" class="headerlink" title="This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a."></a>This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.</h1><p>=======================================================================================</p>
+  </div>
+  <div class="article-entry">
+    <h1 id="This-week-our-team-mainly-do-the-following-work-We-identified-the-main-train-of-thought-and-do-some-experiments-to-realize-the-Step-a"><a href="#This-week-our-team-mainly-do-the-following-work-We-identified-the-main-train-of-thought-and-do-some-experiments-to-realize-the-Step-a" class="headerlink" title="This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a."></a>This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.</h1><p>=======================================================================================</p>
 <h2 id="1-Flowchart"><a href="#1-Flowchart" class="headerlink" title="1.Flowchart"></a>1.Flowchart</h2><p><em>a</em>.Get frame from video</p>
 <p><em>b</em>.Using color recognition to get the contour of the hand</p>
 <p><em>c</em>.finding convexity defects ,get information about fingertips,number of fingers</p>
 <a id="more"></a>
-<p><img src="http://o84kcsbtx.bkt.clouddn.com/logo.png" alt="&#x7A0B;&#x5E8F;&#x6D41;&#x7A0B;&#x56FE;"></p>
+<p><img src="http://o84kcsbtx.bkt.clouddn.com/logo.png" alt="程序流程图"></p>
 <p>=======================================================================================</p>
-<h2 id="2-Configurate-Opencv"><a href="#2-Configurate-Opencv" class="headerlink" title="2. Configurate  Opencv"></a>2. Configurate  Opencv</h2><p><em>1.</em>&#x4E0B;&#x8F7D;OpenCV-3.1.0&#xFF0C;&#x4E0B;&#x8F7D;VS2015&#xFF0C;&#x5B89;&#x88C5;.</p>
-<p><em>2.</em>&#x914D;&#x7F6E;&#x201C;&#x5305;&#x542B;&#x76EE;&#x5F55;&#x201D;&#x548C;&#x201C;&#x5E93;&#x76EE;&#x5F55;&#x201D;&#x4E24;&#x9879;.</p>
-<p><em>3.</em>&#x914D;&#x7F6E;&#x8FDE;&#x63A5;&#x5668;.</p>
+<h2 id="2-Configurate-Opencv"><a href="#2-Configurate-Opencv" class="headerlink" title="2. Configurate  Opencv"></a>2. Configurate  Opencv</h2><p><em>1.</em>下载OpenCV-3.1.0，下载VS2015，安装.</p>
+<p><em>2.</em>配置“包含目录”和“库目录”两项.</p>
+<p><em>3.</em>配置连接器.</p>
 <p>=======================================================================================</p>
 <h2 id="3-source-code"><a href="#3-source-code" class="headerlink" title="3. source code"></a>3. source code</h2><p>The  function of get frame from video( step a ) are showed as followed:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/*init VideoCapture*/</span><br><span class="line"> void initCapture(struct cam *cam)</span><br><span class="line"> {</span><br><span class="line"> loginuse=admin&amp;loginpas=&amp;.mjpg&#x201D;, ip);</span><br><span class="line"> cam-&gt;cap.open(&#x201C;/home/lihao/test/doc/video.avi&#x201D;);</span><br><span class="line">if(cam-&gt;cap.isOpened())</span><br><span class="line"> {</span><br><span class="line"> cout&lt;&lt;&#x201C;init capture&#x201D;&lt;&lt;endl;</span><br><span class="line"> }</span><br><span class="line"> if(!cam-&gt;cap.isOpened())</span><br><span class="line"> {</span><br><span class="line"> //fprintf(stderr, &#x201C;Error initializing capture\n&#x201D;);</span><br><span class="line">cout&lt;&lt;&#x201C;Error initializing capture&#x201D;&lt;&lt;endl;</span><br><span class="line"> exit(0);</span><br><span class="line"> }</span><br><span class="line"> }</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/*init VideoCapture*/</span><br><span class="line"> void initCapture(struct cam *cam)</span><br><span class="line"> &#123;</span><br><span class="line"> loginuse=admin&amp;loginpas=&amp;.mjpg”, ip);</span><br><span class="line"> cam-&gt;cap.open(“/home/lihao/test/doc/video.avi”);</span><br><span class="line">if(cam-&gt;cap.isOpened())</span><br><span class="line"> &#123;</span><br><span class="line"> cout&lt;&lt;“init capture”&lt;&lt;endl;</span><br><span class="line"> &#125;</span><br><span class="line"> if(!cam-&gt;cap.isOpened())</span><br><span class="line"> &#123;</span><br><span class="line"> //fprintf(stderr, “Error initializing capture\n”);</span><br><span class="line">cout&lt;&lt;“Error initializing capture”&lt;&lt;endl;</span><br><span class="line"> exit(0);</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p>====================================================================================</p>
 <h2 id="4-The-experiment-results"><a href="#4-The-experiment-results" class="headerlink" title="4.The experiment results"></a>4.The experiment results</h2><p>This video shows the results of step a :<br><a href="http://v.youku.com/v_show/id_XMTU4NTIzMjQ4OA==.html" target="_blank" rel="external">http://v.youku.com/v_show/id_XMTU4NTIzMjQ4OA==.html</a></p>
 <p>====================================================================================</p>
 <h2 id="5-Next-step"><a href="#5-Next-step" class="headerlink" title="5.Next step"></a>5.Next step</h2><p>Reading some papers and realize the Step b and Step c.</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/05/17/my-new-post/" rel="next" title="Introduction to hand tracking">
-                <i class="fa fa-chevron-left"></i> Introduction to hand tracking
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/01/my-new-post-2/" rel="prev" title="Based on color recognition">
-                Based on color recognition <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
+  <footer class="article-footer">
     
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
   </div>
 
 
-        </div>
-        
-          
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    © 2017 Hexo - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
     </div>
   </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
 
-      
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="cj" />
-          <p class="site-author-name" itemprop="name">cj</p>
-          <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
-          </div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
 
-          
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
             </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
+          </div>
         </div>
 
-        
-        
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
 
-        
-        
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
 
-      </section>
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#This-week-our-team-mainly-do-the-following-work-We-identified-the-main-train-of-thought-and-do-some-experiments-to-realize-the-Step-a"><span class="nav-number">1.</span> <span class="nav-text">This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Flowchart"><span class="nav-number">1.1.</span> <span class="nav-text">1.Flowchart</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Configurate-Opencv"><span class="nav-number">1.2.</span> <span class="nav-text">2. Configurate  Opencv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-source-code"><span class="nav-number">1.3.</span> <span class="nav-text">3. source code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-The-experiment-results"><span class="nav-number">1.4.</span> <span class="nav-text">4.The experiment results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Next-step"><span class="nav-number">1.5.</span> <span class="nav-text">5.Next step</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-        
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">cj</span>
-</div>
-
-<div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
-</div>
-
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-        
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
     </div>
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
 
 
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-  
-  
-  
-
-  
-
-  
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
 
 </body>
 </html>

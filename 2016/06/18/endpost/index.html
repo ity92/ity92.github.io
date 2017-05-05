@@ -1,555 +1,302 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
+<title>
   
+    Using Camshift algorithm to hand tracking
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+</title>
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="This week ,our team realized hand tracking  &amp;#xFF1A;Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.==========================">
+<meta name="description" content="This week ,our team realized hand tracking  ：Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.=================================">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using Camshift algorithm to hand tracking">
 <meta property="og:url" content="http://yoursite.com/2016/06/18/endpost/index.html">
-<meta property="og:site_name" content="3D-Hand-tracking">
-<meta property="og:description" content="This week ,our team realized hand tracking  &amp;#xFF1A;Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.==========================">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="This week ,our team realized hand tracking  ：Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.=================================">
 <meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/trackone.jpg">
 <meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/tracktwo.jpg">
 <meta property="og:updated_time" content="2016-06-17T07:58:13.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Using Camshift algorithm to hand tracking">
-<meta name="twitter:description" content="This week ,our team realized hand tracking  &amp;#xFF1A;Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.==========================">
+<meta name="twitter:description" content="This week ,our team realized hand tracking  ：Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.=================================">
 <meta name="twitter:image" content="http://o84kcsbtx.bkt.clouddn.com/trackone.jpg">
 
 
+  <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
 
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: 'Author'
-    }
-  };
-</script>
 
-  <title> Using Camshift algorithm to hand tracking | 3D-Hand-tracking </title>
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
+<body
   
-
-
-
-
-
-
-
-
-
-
+    class="monochrome"
   
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">3D-Hand-tracking</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">A demo to track your hand——by 李杜&陈健&刘超越&涂明明</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
   </button>
+  <a class="title" href="/">Hexo</a>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">Hexo</a></h1>
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <div class="info">
+      <div class="content">
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Using Camshift algorithm to hand tracking
-              
-            
-          </h1>
+          <div class="author">John Doe</div>
         
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-06-18T13:36:09+08:00" content="2016-06-18">
-              2016-06-18
-            </time>
-          </span>
-
+      </div>
+      
+        <div class="avatar">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/about"><img src="https://cn.gravatar.com/avatar/35fef74d731255cd569c2c2b0b9e87e4?s=200"></a>
           
         </div>
-      </header>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">5</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/denjones/hexo-theme-chan" title="Chan" target="_blank" rel="external">Chan</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/denjones" title="Github" target="_blank" rel="external">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-endpost" class="article article-type-post">
+  
+    <h1 class="article-header">
+      Using Camshift algorithm to hand tracking
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2016-06-18
+</span>
+
     
 
+    
 
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="This-week-our-team-realized-hand-tracking-&#xFF1A;Using-Camshift-algorithm-to-hand-tracking-Understanding-Camshift-algorithm-and-and-get-a-good-experimental-results"><a href="#This-week-our-team-realized-hand-tracking-&#xFF1A;Using-Camshift-algorithm-to-hand-tracking-Understanding-Camshift-algorithm-and-and-get-a-good-experimental-results" class="headerlink" title="This week ,our team realized hand tracking  &#xFF1A;Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results."></a>This week ,our team realized hand tracking  &#xFF1A;Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.</h1><p>=======================================================================================</p>
+  </div>
+  <div class="article-entry">
+    <h1 id="This-week-our-team-realized-hand-tracking-：Using-Camshift-algorithm-to-hand-tracking-Understanding-Camshift-algorithm-and-and-get-a-good-experimental-results"><a href="#This-week-our-team-realized-hand-tracking-：Using-Camshift-algorithm-to-hand-tracking-Understanding-Camshift-algorithm-and-and-get-a-good-experimental-results" class="headerlink" title="This week ,our team realized hand tracking  ：Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results."></a>This week ,our team realized hand tracking  ：Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.</h1><p>=======================================================================================</p>
 <h2 id="First-Understanding-Camshift-algorithm"><a href="#First-Understanding-Camshift-algorithm" class="headerlink" title="First:Understanding Camshift algorithm"></a>First:Understanding Camshift algorithm</h2><a id="more"></a>
-<p>Camshift&#x539F;&#x7406;<br>camshift&#x5229;&#x7528;&#x76EE;&#x6807;&#x7684;&#x989C;&#x8272;&#x76F4;&#x65B9;&#x56FE;&#x6A21;&#x578B;&#x5C06;&#x56FE;&#x50CF;&#x8F6C;&#x6362;&#x4E3A;&#x989C;&#x8272;&#x6982;&#x7387;&#x5206;&#x5E03;&#x56FE;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x641C;&#x7D22;&#x7A97;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x4F4D;&#x7F6E;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x4E0A;&#x4E00;&#x5E27;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x81EA;&#x9002;&#x5E94;&#x8C03;&#x6574;&#x641C;&#x7D22;&#x7A97;&#x53E3;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x5927;&#x5C0F;&#xFF0C;&#x4ECE;&#x800C;&#x5B9A;&#x4F4D;&#x51FA;&#x5F53;&#x524D;&#x56FE;&#x50CF;&#x4E2D;&#x76EE;&#x6807;&#x7684;&#x4E2D;&#x5FC3;&#x4F4D;&#x7F6E;&#x3002;</p>
-<p>&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x90E8;&#x5206;&#xFF1A;<br>1&#x2013;&#x8272;&#x5F69;&#x6295;&#x5F71;&#x56FE;&#xFF08;&#x53CD;&#x5411;&#x6295;&#x5F71;&#xFF09;&#xFF1A;<br>(1).RGB&#x989C;&#x8272;&#x7A7A;&#x95F4;&#x5BF9;&#x5149;&#x7167;&#x4EAE;&#x5EA6;&#x53D8;&#x5316;&#x8F83;&#x4E3A;&#x654F;&#x611F;&#xFF0C;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;&#x6B64;&#x53D8;&#x5316;&#x5BF9;&#x8DDF;&#x8E2A;&#x6548;&#x679C;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x9996;&#x5148;&#x5C06;&#x56FE;&#x50CF;&#x4ECE;RGB&#x7A7A;&#x95F4;&#x8F6C;&#x6362;&#x5230;HSV&#x7A7A;&#x95F4;&#x3002;(2).&#x7136;&#x540E;&#x5BF9;&#x5176;&#x4E2D;&#x7684;H&#x5206;&#x91CF;&#x4F5C;&#x76F4;&#x65B9;&#x56FE;&#xFF0C;&#x5728;&#x76F4;&#x65B9;&#x56FE;&#x4E2D;&#x4EE3;&#x8868;&#x4E86;&#x4E0D;&#x540C;H&#x5206;&#x91CF;&#x503C;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x7387;&#x6216;&#x8005;&#x50CF;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;&#x5C31;&#x662F;&#x8BF4;&#x53EF;&#x4EE5;&#x67E5;&#x627E;&#x51FA;H&#x5206;&#x91CF;&#x5927;&#x5C0F;&#x4E3A;h&#x7684;&#x6982;&#x7387;&#x6216;&#x8005;&#x50CF;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;&#x5373;&#x5F97;&#x5230;&#x4E86;&#x989C;&#x8272;&#x6982;&#x7387;&#x67E5;&#x627E;&#x8868;&#x3002;(3).&#x5C06;&#x56FE;&#x50CF;&#x4E2D;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x7684;&#x503C;&#x7528;&#x5176;&#x989C;&#x8272;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x7387;&#x5BF9;&#x66FF;&#x6362;&#xFF0C;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x989C;&#x8272;&#x6982;&#x7387;&#x5206;&#x5E03;&#x56FE;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C31;&#x53EB;&#x53CD;&#x5411;&#x6295;&#x5F71;&#xFF0C;&#x989C;&#x8272;&#x6982;&#x7387;&#x5206;&#x5E03;&#x56FE;&#x662F;&#x4E00;&#x4E2A;&#x7070;&#x5EA6;&#x56FE;&#x50CF;&#x3002;</p>
-<p>2&#x2013;meanshift<br>meanshift&#x7B97;&#x6CD5;&#x662F;&#x4E00;&#x79CD;&#x5BC6;&#x5EA6;&#x51FD;&#x6570;&#x68AF;&#x5EA6;&#x4F30;&#x8BA1;&#x7684;&#x975E;&#x53C2;&#x6570;&#x65B9;&#x6CD5;&#xFF0C;&#x901A;&#x8FC7;&#x8FED;&#x4EE3;&#x5BFB;&#x4F18;&#x627E;&#x5230;&#x6982;&#x7387;&#x5206;&#x5E03;&#x7684;&#x6781;&#x503C;&#x6765;&#x5B9A;&#x4F4D;&#x76EE;&#x6807;&#x3002;<br>&#x7B97;&#x6CD5;&#x8FC7;&#x7A0B;&#x4E3A;&#xFF1A;<br>(1).&#x5728;&#x989C;&#x8272;&#x6982;&#x7387;&#x5206;&#x5E03;&#x56FE;&#x4E2D;&#x9009;&#x53D6;&#x641C;&#x7D22;&#x7A97;W<br>(2).&#x8BA1;&#x7B97;&#x96F6;&#x9636;&#x8DDD;&#x3001;&#x8BA1;&#x7B97;&#x4E00;&#x9636;&#x8DDD;&#x3001;&#x8BA1;&#x7B97;&#x641C;&#x7D22;&#x7A97;&#x7684;&#x8D28;&#x5FC3;&#x3002;<br>&#xFF08;3).&#x8C03;&#x6574;&#x641C;&#x7D22;&#x7A97;&#x5927;&#x5C0F;<br>&#x5BBD;&#x5EA6;&#x4E3A;&#xFF1B;&#x957F;&#x5EA6;&#x4E3A;1.2s&#xFF1B;<br>(4).&#x79FB;&#x52A8;&#x641C;&#x7D22;&#x7A97;&#x7684;&#x4E2D;&#x5FC3;&#x5230;&#x8D28;&#x5FC3;&#xFF0C;&#x5982;&#x679C;&#x79FB;&#x52A8;&#x8DDD;&#x79BB;&#x5927;&#x4E8E;&#x9884;&#x8BBE;&#x7684;&#x56FA;&#x5B9A;&#x9608;&#x503C;&#xFF0C;&#x5219;&#x91CD;&#x590D;2)3)4)&#xFF0C;&#x76F4;&#x5230;&#x641C;&#x7D22;&#x7A97;&#x7684;&#x4E2D;&#x5FC3;&#x4E0E;&#x8D28;&#x5FC3;&#x95F4;&#x7684;&#x79FB;&#x52A8;&#x8DDD;&#x79BB;&#x5C0F;&#x4E8E;&#x9884;&#x8BBE;&#x7684;&#x56FA;&#x5B9A;&#x9608;&#x503C;&#xFF0C;&#x6216;&#x8005;&#x5FAA;&#x73AF;&#x8FD0;&#x7B97;&#x7684;&#x6B21;&#x6570;&#x8FBE;&#x5230;&#x67D0;&#x4E00;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x505C;&#x6B62;&#x8BA1;&#x7B97;&#x3002;&#x5173;&#x4E8E;meanshift&#x7684;&#x6536;&#x655B;&#x6027;&#x8BC1;&#x660E;&#x53EF;&#x4EE5;google&#x76F8;&#x5173;&#x6587;&#x732E;&#x3002;</p>
-<p>3&#x2013;camshift<br>&#x5C06;meanshift&#x7B97;&#x6CD5;&#x6269;&#x5C55;&#x5230;&#x8FDE;&#x7EED;&#x56FE;&#x50CF;&#x5E8F;&#x5217;&#xFF0C;&#x5C31;&#x662F;camshift&#x7B97;&#x6CD5;&#x3002;&#x5B83;&#x5C06;&#x89C6;&#x9891;&#x7684;&#x6240;&#x6709;&#x5E27;&#x505A;meanshift&#x8FD0;&#x7B97;&#xFF0C;&#x5E76;&#x5C06;&#x4E0A;&#x4E00;&#x5E27;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5373;&#x641C;&#x7D22;&#x7A97;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x4E2D;&#x5FC3;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E0B;&#x4E00;&#x5E27;meanshift&#x7B97;&#x6CD5;&#x641C;&#x7D22;&#x7A97;&#x7684;&#x521D;&#x59CB;&#x503C;&#x3002;&#x5982;&#x6B64;&#x8FED;&#x4EE3;&#x4E0B;&#x53BB;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5BF9;&#x76EE;&#x6807;&#x7684;&#x8DDF;&#x8E2A;&#x3002;<br>&#x7B97;&#x6CD5;&#x8FC7;&#x7A0B;&#x4E3A;&#xFF1A;<br>(1).&#x521D;&#x59CB;&#x5316;&#x641C;&#x7D22;&#x7A97;<br>(2).&#x8BA1;&#x7B97;&#x641C;&#x7D22;&#x7A97;&#x7684;&#x989C;&#x8272;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF08;&#x53CD;&#x5411;&#x6295;&#x5F71;&#xFF09;<br>(3).&#x8FD0;&#x884C;meanshift&#x7B97;&#x6CD5;&#xFF0C;&#x83B7;&#x5F97;&#x641C;&#x7D22;&#x7A97;&#x65B0;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x4F4D;&#x7F6E;&#x3002;<br>(4).&#x5728;&#x4E0B;&#x4E00;&#x5E27;&#x89C6;&#x9891;&#x56FE;&#x50CF;&#x4E2D;&#x7528;(3)&#x4E2D;&#x7684;&#x503C;&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;&#x641C;&#x7D22;&#x7A97;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x4F4D;&#x7F6E;&#xFF0C;&#x518D;&#x8DF3;&#x8F6C;&#x5230;(2)&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x3002;</p>
+<p>Camshift原理<br>camshift利用目标的颜色直方图模型将图像转换为颜色概率分布图，初始化一个搜索窗的大小和位置，并根据上一帧得到的结果自适应调整搜索窗口的位置和大小，从而定位出当前图像中目标的中心位置。</p>
+<p>分为三个部分：<br>1–色彩投影图（反向投影）：<br>(1).RGB颜色空间对光照亮度变化较为敏感，为了减少此变化对跟踪效果的影响，首先将图像从RGB空间转换到HSV空间。(2).然后对其中的H分量作直方图，在直方图中代表了不同H分量值出现的概率或者像素个数，就是说可以查找出H分量大小为h的概率或者像素个数，即得到了颜色概率查找表。(3).将图像中每个像素的值用其颜色出现的概率对替换，就得到了颜色概率分布图。这个过程就叫反向投影，颜色概率分布图是一个灰度图像。</p>
+<p>2–meanshift<br>meanshift算法是一种密度函数梯度估计的非参数方法，通过迭代寻优找到概率分布的极值来定位目标。<br>算法过程为：<br>(1).在颜色概率分布图中选取搜索窗W<br>(2).计算零阶距、计算一阶距、计算搜索窗的质心。<br>（3).调整搜索窗大小<br>宽度为；长度为1.2s；<br>(4).移动搜索窗的中心到质心，如果移动距离大于预设的固定阈值，则重复2)3)4)，直到搜索窗的中心与质心间的移动距离小于预设的固定阈值，或者循环运算的次数达到某一最大值，停止计算。关于meanshift的收敛性证明可以google相关文献。</p>
+<p>3–camshift<br>将meanshift算法扩展到连续图像序列，就是camshift算法。它将视频的所有帧做meanshift运算，并将上一帧的结果，即搜索窗的大小和中心，作为下一帧meanshift算法搜索窗的初始值。如此迭代下去，就可以实现对目标的跟踪。<br>算法过程为：<br>(1).初始化搜索窗<br>(2).计算搜索窗的颜色概率分布（反向投影）<br>(3).运行meanshift算法，获得搜索窗新的大小和位置。<br>(4).在下一帧视频图像中用(3)中的值重新初始化搜索窗的大小和位置，再跳转到(2)继续进行。</p>
 <p>=======================================================================================</p>
-<h2 id="Second-Source-code"><a href="#Second-Source-code" class="headerlink" title="Second:Source code"></a>Second:Source code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">if (track_object)  //track_object&#x975E;&#x96F6;,&#x8868;&#x793A;&#x6709;&#x9700;&#x8981;&#x8DDF;&#x8E2A;&#x7684;&#x7269;&#x4F53;  </span><br><span class="line">	{</span><br><span class="line">		int _vmin = vmin, _vmax = vmax;</span><br><span class="line"></span><br><span class="line">		cvInRangeS(hsv, cvScalar(0, smin, MIN(_vmin, _vmax), 0),</span><br><span class="line">			cvScalar(180, 256, MAX(_vmin, _vmax), 0), mask);</span><br><span class="line">		//&#x5236;&#x4F5C;&#x63A9;&#x819C;&#x677F;&#xFF0C;&#x53EA;&#x5904;&#x7406;&#x50CF;&#x7D20;&#x503C;&#x4E3A;H&#xFF1A;0~180&#xFF0C;S&#xFF1A;smin~256&#xFF0C;V&#xFF1A;vmin~vmax&#x4E4B;&#x95F4;&#x7684;&#x90E8;&#x5206;  </span><br><span class="line">		cvSplit(hsv, hue, 0, 0, 0);</span><br><span class="line">		//&#x5206;&#x79BB;H&#x5206;&#x91CF;  </span><br><span class="line"></span><br><span class="line">		if (track_object &lt; 0)</span><br><span class="line">			//&#x5982;&#x679C;&#x9700;&#x8981;&#x8DDF;&#x8E2A;&#x7684;&#x7269;&#x4F53;&#x8FD8;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x5C5E;&#x6027;&#x63D0;&#x53D6;&#xFF0C;&#x5219;&#x8FDB;&#x884C;&#x9009;&#x53D6;&#x6846;&#x7C7B;&#x7684;&#x56FE;&#x50CF;&#x5C5E;&#x6027;&#x63D0;&#x53D6;  </span><br><span class="line">		{</span><br><span class="line">			float max_val = 0.f;</span><br><span class="line">			cvSetImageROI(hue, selection);</span><br><span class="line">			//&#x8BBE;&#x7F6E;&#x539F;&#x9009;&#x62E9;&#x6846;&#x4E3A;ROI  </span><br><span class="line">			cvSetImageROI(mask, selection);</span><br><span class="line">			//&#x8BBE;&#x7F6E;&#x63A9;&#x819C;&#x677F;&#x9009;&#x62E9;&#x6846;&#x4E3A;ROI  </span><br><span class="line">			cvCalcHist(&amp;hue, hist, 0, mask);</span><br><span class="line">			//&#x5F97;&#x5230;&#x9009;&#x62E9;&#x6846;&#x5185;&#x4E14;&#x6EE1;&#x8DB3;&#x63A9;&#x819C;&#x677F;&#x5185;&#x7684;&#x76F4;&#x65B9;&#x56FE;  </span><br><span class="line">			cvGetMinMaxHistValue(hist, 0, &amp;max_val, 0, 0);</span><br><span class="line">			cvConvertScale(hist-&gt;bins, hist-&gt;bins, max_val ? 255. / max_val : 0., 0);</span><br><span class="line">			// &#x5BF9;&#x76F4;&#x65B9;&#x56FE;&#x7684;&#x6570;&#x503C;&#x8F6C;&#x4E3A;0~255  </span><br><span class="line">			cvResetImageROI(hue);</span><br><span class="line">			//&#x53BB;&#x9664;ROI  </span><br><span class="line">			cvResetImageROI(mask);</span><br><span class="line">			//&#x53BB;&#x9664;ROI  </span><br><span class="line">			track_window = selection;</span><br><span class="line">			track_object = 1;</span><br><span class="line">			//&#x7F6E;track_object&#x4E3A;1,&#x8868;&#x660E;&#x5C5E;&#x6027;&#x63D0;&#x53D6;&#x5B8C;&#x6210;  </span><br><span class="line">			cvZero(histimg);</span><br><span class="line">			bin_w = histimg-&gt;width / hdims;</span><br><span class="line">			for (i = 0; i &lt; hdims; i++)</span><br><span class="line">				//&#x753B;&#x76F4;&#x65B9;&#x56FE;&#x5230;&#x56FE;&#x50CF;&#x7A7A;&#x95F4;  </span><br><span class="line">			{</span><br><span class="line">				int val = cvRound(cvGetReal1D(hist-&gt;bins, i)*histimg-&gt;height / 255);</span><br><span class="line">				CvScalar color = hsv2rgb(i*180.f / hdims);</span><br><span class="line">				cvRectangle(histimg, cvPoint(i*bin_w, histimg-&gt;height),</span><br><span class="line">					cvPoint((i + 1)*bin_w, histimg-&gt;height - val), color, -1, 8, 0);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		cvCalcBackProject(&amp;hue, backproject, hist);</span><br><span class="line">		//&#x8BA1;&#x7B97;hue&#x7684;&#x53CD;&#x5411;&#x6295;&#x5F71;&#x56FE;  </span><br><span class="line">		cvAnd(backproject, mask, backproject, 0);</span><br><span class="line">		//&#x5F97;&#x5230;&#x63A9;&#x819C;&#x5185;&#x7684;&#x53CD;&#x5411;&#x6295;&#x5F71;  </span><br><span class="line">		cvCamShift(backproject, track_window,</span><br><span class="line">			cvTermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 10, 1),</span><br><span class="line">			&amp;track_comp, &amp;track_box);</span><br><span class="line">		//&#x4F7F;&#x7528;MeanShift&#x7B97;&#x6CD5;&#x5BF9;backproject&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x641C;&#x7D22;,&#x8FD4;&#x56DE;&#x8DDF;&#x8E2A;&#x7ED3;&#x679C;  </span><br><span class="line">		track_window = track_comp.rect;</span><br><span class="line">		//&#x5F97;&#x5230;&#x8DDF;&#x8E2A;&#x7ED3;&#x679C;&#x7684;&#x77E9;&#x5F62;&#x6846;  </span><br><span class="line"></span><br><span class="line">		if (backproj_mode)</span><br><span class="line">			cvCvtColor(backproject, image, CV_GRAY2BGR);</span><br><span class="line"></span><br><span class="line">		if (image-&gt;origin)</span><br><span class="line">			track_box.angle = -track_box.angle;</span><br><span class="line">		cvEllipseBox(image, track_box, CV_RGB(255, 0, 0), 3, CV_AA, 0);</span><br><span class="line">		//&#x753B;&#x51FA;&#x8DDF;&#x8E2A;&#x7ED3;&#x679C;&#x7684;&#x4F4D;&#x7F6E;</span><br><span class="line"></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	if (select_object &amp;&amp; selection.width &gt; 0 &amp;&amp; selection.height &gt; 0)</span><br><span class="line">		//&#x5982;&#x679C;&#x6B63;&#x5904;&#x4E8E;&#x7269;&#x4F53;&#x9009;&#x62E9;&#xFF0C;&#x753B;&#x51FA;&#x9009;&#x62E9;&#x6846;  </span><br><span class="line">	{</span><br><span class="line">		cvSetImageROI(image, selection);</span><br><span class="line">		cvXorS(image, cvScalarAll(255), image, 0);</span><br><span class="line">		cvResetImageROI(image);</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	cvShowImage(&quot;CamShiftDemo&quot;, image);</span><br><span class="line">	cvShowImage(&quot;Histogram&quot;, histimg);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="Second-Source-code"><a href="#Second-Source-code" class="headerlink" title="Second:Source code"></a>Second:Source code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">if (track_object)  //track_object非零,表示有需要跟踪的物体  </span><br><span class="line">	&#123;</span><br><span class="line">		int _vmin = vmin, _vmax = vmax;</span><br><span class="line"></span><br><span class="line">		cvInRangeS(hsv, cvScalar(0, smin, MIN(_vmin, _vmax), 0),</span><br><span class="line">			cvScalar(180, 256, MAX(_vmin, _vmax), 0), mask);</span><br><span class="line">		//制作掩膜板，只处理像素值为H：0~180，S：smin~256，V：vmin~vmax之间的部分  </span><br><span class="line">		cvSplit(hsv, hue, 0, 0, 0);</span><br><span class="line">		//分离H分量  </span><br><span class="line"></span><br><span class="line">		if (track_object &lt; 0)</span><br><span class="line">			//如果需要跟踪的物体还没有进行属性提取，则进行选取框类的图像属性提取  </span><br><span class="line">		&#123;</span><br><span class="line">			float max_val = 0.f;</span><br><span class="line">			cvSetImageROI(hue, selection);</span><br><span class="line">			//设置原选择框为ROI  </span><br><span class="line">			cvSetImageROI(mask, selection);</span><br><span class="line">			//设置掩膜板选择框为ROI  </span><br><span class="line">			cvCalcHist(&amp;hue, hist, 0, mask);</span><br><span class="line">			//得到选择框内且满足掩膜板内的直方图  </span><br><span class="line">			cvGetMinMaxHistValue(hist, 0, &amp;max_val, 0, 0);</span><br><span class="line">			cvConvertScale(hist-&gt;bins, hist-&gt;bins, max_val ? 255. / max_val : 0., 0);</span><br><span class="line">			// 对直方图的数值转为0~255  </span><br><span class="line">			cvResetImageROI(hue);</span><br><span class="line">			//去除ROI  </span><br><span class="line">			cvResetImageROI(mask);</span><br><span class="line">			//去除ROI  </span><br><span class="line">			track_window = selection;</span><br><span class="line">			track_object = 1;</span><br><span class="line">			//置track_object为1,表明属性提取完成  </span><br><span class="line">			cvZero(histimg);</span><br><span class="line">			bin_w = histimg-&gt;width / hdims;</span><br><span class="line">			for (i = 0; i &lt; hdims; i++)</span><br><span class="line">				//画直方图到图像空间  </span><br><span class="line">			&#123;</span><br><span class="line">				int val = cvRound(cvGetReal1D(hist-&gt;bins, i)*histimg-&gt;height / 255);</span><br><span class="line">				CvScalar color = hsv2rgb(i*180.f / hdims);</span><br><span class="line">				cvRectangle(histimg, cvPoint(i*bin_w, histimg-&gt;height),</span><br><span class="line">					cvPoint((i + 1)*bin_w, histimg-&gt;height - val), color, -1, 8, 0);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cvCalcBackProject(&amp;hue, backproject, hist);</span><br><span class="line">		//计算hue的反向投影图  </span><br><span class="line">		cvAnd(backproject, mask, backproject, 0);</span><br><span class="line">		//得到掩膜内的反向投影  </span><br><span class="line">		cvCamShift(backproject, track_window,</span><br><span class="line">			cvTermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 10, 1),</span><br><span class="line">			&amp;track_comp, &amp;track_box);</span><br><span class="line">		//使用MeanShift算法对backproject中的内容进行搜索,返回跟踪结果  </span><br><span class="line">		track_window = track_comp.rect;</span><br><span class="line">		//得到跟踪结果的矩形框  </span><br><span class="line"></span><br><span class="line">		if (backproj_mode)</span><br><span class="line">			cvCvtColor(backproject, image, CV_GRAY2BGR);</span><br><span class="line"></span><br><span class="line">		if (image-&gt;origin)</span><br><span class="line">			track_box.angle = -track_box.angle;</span><br><span class="line">		cvEllipseBox(image, track_box, CV_RGB(255, 0, 0), 3, CV_AA, 0);</span><br><span class="line">		//画出跟踪结果的位置</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	if (select_object &amp;&amp; selection.width &gt; 0 &amp;&amp; selection.height &gt; 0)</span><br><span class="line">		//如果正处于物体选择，画出选择框  </span><br><span class="line">	&#123;</span><br><span class="line">		cvSetImageROI(image, selection);</span><br><span class="line">		cvXorS(image, cvScalarAll(255), image, 0);</span><br><span class="line">		cvResetImageROI(image);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cvShowImage(&quot;CamShiftDemo&quot;, image);</span><br><span class="line">	cvShowImage(&quot;Histogram&quot;, histimg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>=======================================================================================</p>
 <h2 id="Third-Experimental-results"><a href="#Third-Experimental-results" class="headerlink" title="Third:Experimental results"></a>Third:Experimental results</h2><p><img src="http://o84kcsbtx.bkt.clouddn.com/trackone.jpg" alt="tracking">     </p>
 <p> <img src="http://o84kcsbtx.bkt.clouddn.com/tracktwo.jpg" alt="tracking"></p>
-<p>&#x5F53;&#x624B;&#x79FB;&#x52A8;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x8DDF;&#x8E2A;&#x7684;&#x6548;&#x679C;&#x4E5F;&#x8FD8;&#x53EF;&#x4EE5;&#xFF0C;&#x5230;&#x6B64;handtracking&#x544A;&#x4E00;&#x6BB5;&#x843D;&#x3002;&#x5728;&#x6B64;&#x611F;&#x8C22;&#x6768;&#x6B23;&#x8001;&#x5E08;&#x7684;&#x6559;&#x5BFC;&#xFF01;&#x611F;&#x8C22;&#x961F;&#x53CB;&#x4EEC;&#x7684;&#x76F8;&#x4E92;&#x652F;&#x6301;&#x548C;&#x5E2E;&#x52A9;&#x3002;</p>
+<p>当手移动时，可以看出跟踪的效果也还可以，到此handtracking告一段落。在此感谢杨欣老师的教导！感谢队友们的相互支持和帮助。</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/06/11/forthpost/" rel="next" title="Find hand and fingers">
-                <i class="fa fa-chevron-left"></i> Find hand and fingers
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
+  <footer class="article-footer">
     
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
   </div>
 
 
-        </div>
-        
-          
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    © 2017 Hexo - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
     </div>
   </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
 
-      
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="cj" />
-          <p class="site-author-name" itemprop="name">cj</p>
-          <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
-          </div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
 
-          
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
             </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
+          </div>
         </div>
 
-        
-        
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
 
-        
-        
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
 
-      </section>
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#This-week-our-team-realized-hand-tracking-：Using-Camshift-algorithm-to-hand-tracking-Understanding-Camshift-algorithm-and-and-get-a-good-experimental-results"><span class="nav-number">1.</span> <span class="nav-text">This week ,our team realized hand tracking  ：Using  Camshift  algorithm  to  hand tracking .Understanding Camshift  algorithm  and and get a good experimental results.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#First-Understanding-Camshift-algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">First:Understanding Camshift algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Second-Source-code"><span class="nav-number">1.2.</span> <span class="nav-text">Second:Source code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Third-Experimental-results"><span class="nav-number">1.3.</span> <span class="nav-text">Third:Experimental results</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-        
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">cj</span>
-</div>
-
-<div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
-</div>
-
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-        
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
     </div>
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
 
 
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-  
-  
-  
-
-  
-
-  
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
 
 </body>
 </html>
