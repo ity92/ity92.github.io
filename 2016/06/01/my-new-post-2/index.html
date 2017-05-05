@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    Based on color recognition
+  
+</title>
+
+<meta name="description" content="This week ,our team realized the step b ：Using color recognition to get the contour of the hand.Understanding skin color detection algorithm and and get a good experimental results.===================">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Based on color recognition">
+<meta property="og:url" content="http://yoursite.com/2016/06/01/my-new-post-2/index.html">
+<meta property="og:site_name" content="爆发吧！ 进击的小巨人">
+<meta property="og:description" content="This week ,our team realized the step b ：Using color recognition to get the contour of the hand.Understanding skin color detection algorithm and and get a good experimental results.===================">
+<meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/rgb.png">
+<meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/gray.png">
+<meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/hand.jpg">
+<meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/handtwo.jpg">
+<meta property="og:updated_time" content="2016-06-02T11:44:54.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Based on color recognition">
+<meta name="twitter:description" content="This week ,our team realized the step b ：Using color recognition to get the contour of the hand.Understanding skin color detection algorithm and and get a good experimental results.===================">
+<meta name="twitter:image" content="http://o84kcsbtx.bkt.clouddn.com/rgb.png">
+
+
+  <link rel="alternative" href="/atom.xml" title="爆发吧！ 进击的小巨人" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">爆发吧！ 进击的小巨人</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">爆发吧！ 进击的小巨人</a></h1>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">C-J</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://cn.gravatar.com/avatar/35fef74d731255cd569c2c2b0b9e87e4?s=200"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">Category</a>
+                
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">5</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/denjones/hexo-theme-chan" title="Chan" target="_blank" rel="external">Chan</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/denjones" title="Github" target="_blank" rel="external">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-my-new-post-2" class="article article-type-post">
+  
+    <h1 class="article-header">
+      Based on color recognition
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2016-06-01
+</span>
+
+    
+
+    
+
+  </div>
+  <div class="article-entry">
+    <h1 id="This-week-our-team-realized-the-step-b-：Using-color-recognition-to-get-the-contour-of-the-hand-Understanding-skin-color-detection-algorithm-and-and-get-a-good-experimental-results"><a href="#This-week-our-team-realized-the-step-b-：Using-color-recognition-to-get-the-contour-of-the-hand-Understanding-skin-color-detection-algorithm-and-and-get-a-good-experimental-results" class="headerlink" title="This week ,our team realized the step b ：Using color recognition to get the contour of the hand.Understanding skin color detection algorithm and and get a good experimental results."></a>This week ,our team realized the step b ：Using color recognition to get the contour of the hand.Understanding skin color detection algorithm and and get a good experimental results.</h1><p>=======================================================================================</p>
+<h2 id="First-Understanding-skin-color-detection-algorithm"><a href="#First-Understanding-skin-color-detection-algorithm" class="headerlink" title="First:Understanding skin color detection algorithm"></a>First:Understanding skin color detection algorithm</h2><a id="more"></a>
+<p> 1.RGB颜色空间模型<br>    对图像处理而言, RGB是最为重要和常见的颜色模型, 它建立在笛卡尔坐标系中, 以红、绿、蓝三种基本色为基础, 进行不同程度的叠加, 产生丰富而广泛的颜色, 俗称三基色模式。<br>    RGB颜色空间以一个单位长度的立方体来表示颜色, 黑、蓝、绿、青、红、紫(品红)、黄、白等8种常见颜色分别位于立方体的8个顶点。将黑色置于三维直角坐标系的原点, 红、绿、蓝分别在三个坐标轴上,整个立方体在每一象限内。<br>各颜色的取值范围是:R:0 ～ 255;G:0 ～ 255;B:0 ～ 255, 归一化到0 ～ 1 之间。红绿蓝分量全部组合起来共可表示2563 =16777216种不同的颜色, 比人眼能分辨的颜色种类要多得多, 因此, 虽然自然界中的颜色非常多, 但用RGB颜色空间来近似表达自然界中的颜色是完全够用了。<br><img src="http://o84kcsbtx.bkt.clouddn.com/rgb.png" alt="RGB颜色空间模型"><br> 2.对于彩色图像, 传统的阈值分割算法是先将彩色图像转换成灰度图像, 再取一个灰度值作为阈值, 逐个像素进行处理, 若此像素灰度值小于等于阈值的为前景, 置为黑色, 若大于阈值的为背景, 置为白色。<br><img src="http://o84kcsbtx.bkt.clouddn.com/gray.png" alt="灰度转换与RGB颜色空间模型"></p>
+<h5 id="3-该算法核心思想：将图像转换到YCbCr颜色空间，再利用椭圆皮肤模型进行皮肤检测。之后再转换到灰度图，并进行中值滤波，再进行二值图描述。"><a href="#3-该算法核心思想：将图像转换到YCbCr颜色空间，再利用椭圆皮肤模型进行皮肤检测。之后再转换到灰度图，并进行中值滤波，再进行二值图描述。" class="headerlink" title="3.该算法核心思想：将图像转换到YCbCr颜色空间，再利用椭圆皮肤模型进行皮肤检测。之后再转换到灰度图，并进行中值滤波，再进行二值图描述。"></a>3.该算法核心思想：将图像转换到YCbCr颜色空间，再利用椭圆皮肤模型进行皮肤检测。之后再转换到灰度图，并进行中值滤波，再进行二值图描述。</h5><p>=======================================================================================</p>
+<h2 id="Second-Source-code"><a href="#Second-Source-code" class="headerlink" title="Second:Source code"></a>Second:Source code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">void skindetect(Mat img)</span><br><span class="line">&#123;</span><br><span class="line">	Mat skinCrCbHist = Mat::zeros(Size(256, 256), CV_8UC1);</span><br><span class="line">	ellipse(skinCrCbHist, Point(113, 155.6), Size(23.4, 15.2), 43.0, 0.0, 360.0, Scalar(255, 255, 255), -1);</span><br><span class="line">	Mat ycrcb_image;</span><br><span class="line"></span><br><span class="line">	Mat output_mask;</span><br><span class="line">	Mat output_image;</span><br><span class="line">	output_mask = Mat::zeros(img.size(), CV_8UC1);</span><br><span class="line">	cvtColor(img, ycrcb_image, COLOR_BGR2YCrCb); //首先转换成到YCrCb空间</span><br><span class="line">	for (int i = 0; i &lt; img.cols; i++)   //利用椭圆皮肤模型进行皮肤检测</span><br><span class="line">		for (int j = 0; j &lt; img.rows; j++) &#123;</span><br><span class="line">			Vec3b ycrcb = ycrcb_image.at&lt;Vec3b&gt;(j, i);</span><br><span class="line">			if (skinCrCbHist.at&lt;uchar&gt;(ycrcb[1], ycrcb[2]) &gt; 0)</span><br><span class="line">				output_mask.at&lt;uchar&gt;(j, i) = 255;</span><br><span class="line">		&#125;</span><br><span class="line">	img.copyTo(output_image, output_mask);</span><br><span class="line"></span><br><span class="line">	//imshow(&quot;output mask&quot;, output_mask);</span><br><span class="line">	imshow(&quot;skin&quot;, output_image);</span><br><span class="line">	output_image.setTo(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>=======================================================================================</p>
+<h2 id="Third-Experimental-results"><a href="#Third-Experimental-results" class="headerlink" title="Third:Experimental results"></a>Third:Experimental results</h2><p> 将图像转换到YCbCr颜色空间，然后判断是否属于皮肤区域，结果如下 ：<br><img src="http://o84kcsbtx.bkt.clouddn.com/hand.jpg" alt="肤色检测"></p>
+<p>之后再转换到灰度图，并进行中值滤波，再进行二值图描述，结果如下：<br><img src="http://o84kcsbtx.bkt.clouddn.com/handtwo.jpg" alt="灰度检测"></p>
+<h5 id="实验结果：由于是白天在实验室采集的图像，实验室的灯光对肤色检测有一定的影响因素，大致结果趋于完好。"><a href="#实验结果：由于是白天在实验室采集的图像，实验室的灯光对肤色检测有一定的影响因素，大致结果趋于完好。" class="headerlink" title="实验结果：由于是白天在实验室采集的图像，实验室的灯光对肤色检测有一定的影响因素，大致结果趋于完好。"></a>实验结果：由于是白天在实验室采集的图像，实验室的灯光对肤色检测有一定的影响因素，大致结果趋于完好。</h5><p>=======================================================================================</p>
+<h2 id="Forth-Next-step"><a href="#Forth-Next-step" class="headerlink" title="Forth:Next step"></a>Forth:Next step</h2><p> Realize the step c: Finding convexity defects ,get information about fingertips,number of fingers   </p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 爆发吧！ 进击的小巨人 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    Hand Detection Using Color Recognition
+  
+</title>
+
+<meta name="description" content="This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.=================================================================">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hand Detection Using Color Recognition">
+<meta property="og:url" content="http://yoursite.com/2016/05/25/my-new-post-1/index.html">
+<meta property="og:site_name" content="爆发吧！ 进击的小巨人">
+<meta property="og:description" content="This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.=================================================================">
+<meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/logo.png">
+<meta property="og:updated_time" content="2016-06-02T03:24:31.211Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hand Detection Using Color Recognition">
+<meta name="twitter:description" content="This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.=================================================================">
+<meta name="twitter:image" content="http://o84kcsbtx.bkt.clouddn.com/logo.png">
+
+
+  <link rel="alternative" href="/atom.xml" title="爆发吧！ 进击的小巨人" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">爆发吧！ 进击的小巨人</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">爆发吧！ 进击的小巨人</a></h1>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">C-J</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://cn.gravatar.com/avatar/35fef74d731255cd569c2c2b0b9e87e4?s=200"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">Category</a>
+                
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">5</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/denjones/hexo-theme-chan" title="Chan" target="_blank" rel="external">Chan</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/denjones" title="Github" target="_blank" rel="external">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-my-new-post-1" class="article article-type-post">
+  
+    <h1 class="article-header">
+      Hand Detection Using Color Recognition
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2016-05-25
+</span>
+
+    
+
+    
+
+  </div>
+  <div class="article-entry">
+    <h1 id="This-week-our-team-mainly-do-the-following-work-We-identified-the-main-train-of-thought-and-do-some-experiments-to-realize-the-Step-a"><a href="#This-week-our-team-mainly-do-the-following-work-We-identified-the-main-train-of-thought-and-do-some-experiments-to-realize-the-Step-a" class="headerlink" title="This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a."></a>This week ,our team mainly do the following work:We identified the main train of thought,and do some experiments to realize the Step a.</h1><p>=======================================================================================</p>
+<h2 id="1-Flowchart"><a href="#1-Flowchart" class="headerlink" title="1.Flowchart"></a>1.Flowchart</h2><p><em>a</em>.Get frame from video</p>
+<p><em>b</em>.Using color recognition to get the contour of the hand</p>
+<p><em>c</em>.finding convexity defects ,get information about fingertips,number of fingers</p>
+<a id="more"></a>
+<p><img src="http://o84kcsbtx.bkt.clouddn.com/logo.png" alt="程序流程图"></p>
+<p>=======================================================================================</p>
+<h2 id="2-Configurate-Opencv"><a href="#2-Configurate-Opencv" class="headerlink" title="2. Configurate  Opencv"></a>2. Configurate  Opencv</h2><p><em>1.</em>下载OpenCV-3.1.0，下载VS2015，安装.</p>
+<p><em>2.</em>配置“包含目录”和“库目录”两项.</p>
+<p><em>3.</em>配置连接器.</p>
+<p>=======================================================================================</p>
+<h2 id="3-source-code"><a href="#3-source-code" class="headerlink" title="3. source code"></a>3. source code</h2><p>The  function of get frame from video( step a ) are showed as followed:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/*init VideoCapture*/</span><br><span class="line"> void initCapture(struct cam *cam)</span><br><span class="line"> &#123;</span><br><span class="line"> loginuse=admin&amp;loginpas=&amp;.mjpg”, ip);</span><br><span class="line"> cam-&gt;cap.open(“/home/lihao/test/doc/video.avi”);</span><br><span class="line">if(cam-&gt;cap.isOpened())</span><br><span class="line"> &#123;</span><br><span class="line"> cout&lt;&lt;“init capture”&lt;&lt;endl;</span><br><span class="line"> &#125;</span><br><span class="line"> if(!cam-&gt;cap.isOpened())</span><br><span class="line"> &#123;</span><br><span class="line"> //fprintf(stderr, “Error initializing capture\n”);</span><br><span class="line">cout&lt;&lt;“Error initializing capture”&lt;&lt;endl;</span><br><span class="line"> exit(0);</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>====================================================================================</p>
+<h2 id="4-The-experiment-results"><a href="#4-The-experiment-results" class="headerlink" title="4.The experiment results"></a>4.The experiment results</h2><p>This video shows the results of step a :<br><a href="http://v.youku.com/v_show/id_XMTU4NTIzMjQ4OA==.html" target="_blank" rel="external">http://v.youku.com/v_show/id_XMTU4NTIzMjQ4OA==.html</a></p>
+<p>====================================================================================</p>
+<h2 id="5-Next-step"><a href="#5-Next-step" class="headerlink" title="5.Next step"></a>5.Next step</h2><p>Reading some papers and realize the Step b and Step c.</p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 爆发吧！ 进击的小巨人 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>
