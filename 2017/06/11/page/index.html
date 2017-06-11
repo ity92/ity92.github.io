@@ -8,23 +8,20 @@
 
 <title>
   
-    Find hand and fingers
+    page
   
 </title>
 
-<meta name="description" content="This week ,our team realized the step c:finding convexity defects ,get information about fingertips,number of fingers.doing a lot of experiments and get some good results.=============================">
+<meta name="description" content="#网络请求">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Find hand and fingers">
-<meta property="og:url" content="http://yoursite.com/2016/06/11/forthpost/index.html">
+<meta property="og:title" content="page">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/page/index.html">
 <meta property="og:site_name" content="爆发吧！ 进击的小巨人">
-<meta property="og:description" content="This week ,our team realized the step c:finding convexity defects ,get information about fingertips,number of fingers.doing a lot of experiments and get some good results.=============================">
-<meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/finger.png">
-<meta property="og:image" content="http://o84kcsbtx.bkt.clouddn.com/hands.png">
-<meta property="og:updated_time" content="2016-06-17T03:14:57.100Z">
+<meta property="og:description" content="#网络请求">
+<meta property="og:updated_time" content="2017-06-11T15:22:17.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Find hand and fingers">
-<meta name="twitter:description" content="This week ,our team realized the step c:finding convexity defects ,get information about fingertips,number of fingers.doing a lot of experiments and get some good results.=============================">
-<meta name="twitter:image" content="http://o84kcsbtx.bkt.clouddn.com/finger.png">
+<meta name="twitter:title" content="page">
+<meta name="twitter:description" content="#网络请求">
 
 
   <link rel="alternative" href="/atom.xml" title="爆发吧！ 进击的小巨人" type="application/atom+xml">
@@ -152,17 +149,17 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-forthpost" class="article article-type-post">
+          <article id="post-page" class="article article-type-post">
   
     <h1 class="article-header">
-      Find hand and fingers
+      page
     </h1>
   
   
 
   <div class="article-info">
     <span class="article-date">
-  2016-06-11
+  2017-06-11
 </span>
 
     
@@ -171,14 +168,7 @@
 
   </div>
   <div class="article-entry">
-    <h1 id="This-week-our-team-realized-the-step-c-finding-convexity-defects-get-information-about-fingertips-number-of-fingers-doing-a-lot-of-experiments-and-get-some-good-results"><a href="#This-week-our-team-realized-the-step-c-finding-convexity-defects-get-information-about-fingertips-number-of-fingers-doing-a-lot-of-experiments-and-get-some-good-results" class="headerlink" title="This week ,our team realized the step c:finding convexity defects ,get information about fingertips,number of fingers.doing a lot of experiments and get some good results."></a>This week ,our team realized the step c:finding convexity defects ,get information about fingertips,number of fingers.doing a lot of experiments and get some good results.</h1><p>=======================================================================================</p>
-<h2 id="First-Flowchart"><a href="#First-Flowchart" class="headerlink" title="First:Flowchart"></a>First:Flowchart</h2><p>  Get contours -&gt;describe contours  with convex polygons and find convexity defects -&gt;Information about hand center and find fingers<br><a id="more"></a><br><img src="http://o84kcsbtx.bkt.clouddn.com/finger.png" alt="检测手部"></p>
-<p>=======================================================================================</p>
-<h2 id="Second-Source-code"><a href="#Second-Source-code" class="headerlink" title="Second:Source code"></a>Second:Source code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">void HandDetector::findContour() //寻找手部轮廓</span><br><span class="line">&#123;</span><br><span class="line">  double area, max_area = 0.0;</span><br><span class="line">  CvSeq *contours, *tmp, *contour = NULL;</span><br><span class="line"></span><br><span class="line">  /* cvFindContours modifies input image, so make a copy */</span><br><span class="line">  cvCopy(thr_image, temp_image1, NULL);</span><br><span class="line">  cvFindContours(temp_image1, temp_st, &amp;contours,</span><br><span class="line">           sizeof(CvContour), CV_RETR_EXTERNAL,</span><br><span class="line">           CV_CHAIN_APPROX_SIMPLE, cvPoint(0, 0));</span><br><span class="line">		   &#125;</span><br><span class="line"> void HandDetector::findConvexHull()  //画出凸包，找出凸包缺陷，得到手部中心和手指信息</span><br><span class="line">&#123;</span><br><span class="line">  CvSeq *defects;</span><br><span class="line">  CvConvexityDefect *defect_array;</span><br><span class="line">  int i;</span><br><span class="line">  int x = 0, y = 0;</span><br><span class="line">  int dist = 0;</span><br><span class="line"></span><br><span class="line">  hull = NULL;</span><br><span class="line"></span><br><span class="line">  if (!contourHand)</span><br><span class="line">    return;</span><br><span class="line"></span><br><span class="line"> //hull = cvConvexHull2(contourHand, hull_st, CV_CLOCKWISE, 0);</span><br><span class="line">  hull = cvConvexHull2(contourHand, 0, CV_CLOCKWISE, 0);</span><br><span class="line"></span><br><span class="line">  if (hull) &#123;</span><br><span class="line"></span><br><span class="line">    /* Get convexity defects of contour w.r.t. the convex hull */</span><br><span class="line">    defects = cvConvexityDefects(contourHand, hull,defects_st);</span><br><span class="line"></span><br><span class="line">    if (defects &amp;&amp; defects-&gt;total) &#123;</span><br><span class="line">      defect_array = (CvConvexityDefect *)calloc(defects-&gt;total,</span><br><span class="line">                sizeof(CvConvexityDefect));</span><br><span class="line">      cvCvtSeqToArray(defects, defect_array, CV_WHOLE_SEQ);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>=======================================================================================</p>
-<h2 id="Third-Experimental-results"><a href="#Third-Experimental-results" class="headerlink" title="Third:Experimental results"></a>Third:Experimental results</h2><p><img src="http://o84kcsbtx.bkt.clouddn.com/hands.png" alt="检测手部"><br>实验结果表明，可以确定手部的一些信息，如手部中心、手指个数等，为确定手部跟踪有非常重要的作用。</p>
-<p>=======================================================================================</p>
-<h2 id="Forth-Next-step"><a href="#Forth-Next-step" class="headerlink" title="Forth:Next step"></a>Forth:Next step</h2><p>  Learning some hand tracking algorithm,and using one of them  to hand tracking </p>
+    <p>#网络请求</p>
 
   </div>
   <footer class="article-footer">
